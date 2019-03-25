@@ -13,6 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -39,7 +40,8 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous">
 </script>
-
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 
     // slide Image part 
@@ -49,6 +51,7 @@
     function plusDivs(n)
     {
         showDivs(slideIndex += n);
+        
     }
 
     function showDivs(n) {
@@ -126,6 +129,17 @@
                 },
                 success: function(result){
                     console.log(result);
+                    
+                    swal({
+                        title: "Good job!",
+                        text: "You have saved the data!",
+                        icon: "success",
+                        button: "OK!",
+                        timer: 3000,
+                    });
+
+                    // refresh page
+                    //location.reload();
                 }
             });
             
@@ -147,15 +161,17 @@
                 },
                 success: function(result){
 
-                    if(result == null){
-                        $("input[type=checkbox]").attr("checked", false);
+                    if(result.data == null){
+                        console.log('In if result.data == null');
 
-                        // will be fixed later
-                        $("select[name=geometry] option[value=null]").attr("selected", true);
-                        $("select[name=material] option[value=null]").attr("selected", true);
-                        
+                        $("#geometry option").removeAttr('selected');
+                        $("#material option").removeAttr('selected');
+                        $("#geometry option[value=null]").attr('selected');
+                        $("#material option[value=null]").attr('selected');
+                        $("input[type=checkbox]").prop("checked",false).checkboxradio();   // 
+                              
                     }else{
-                        console.log(result.data);
+                        console.log('In else result.data');
                         // uncheck all checkbox 
                         $("input[type=checkbox]").attr("checked", false);
     

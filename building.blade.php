@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('content')
 <div class="container">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="https://www.obayashi.co.jp/">
@@ -333,7 +334,7 @@
         console.log(dataImage);
         $("input[type=checkbox]").attr("checked", false);
         
-        dataImage.solid == 1 ? $("input[name=solid]").attr("checked", "checked") : '';
+        dataImage.solid == 1 ? $("input[name=solid]").attr("checked", "checked") : $("input[name=solid]").attr("checked", false);
         dataImage.modern == 1 ?$("input[name=modern]").attr("checked", "checked") : '';
         dataImage.massive == 1 ?$("input[name=massive]").attr("checked", "checked"): '';
         dataImage.regular == 1 ? $("input[name=regular]").attr("checked", "checked") : '';
@@ -362,3 +363,6 @@
 
 </script>
 
+
+
+@endsection
