@@ -7,14 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -24,12 +22,6 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                
-            </div>
-        </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
@@ -40,20 +32,15 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous">
 </script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
 
-    // slide Image part 
+<script type="text/javascript">
+    // slide Image part
     var slideIndex;
     showDivs(slideIndex);
-
     function plusDivs(n)
     {
         showDivs(slideIndex += n);
-        
     }
-
     function showDivs(n) {
         var i;
         var x = document.getElementsByClassName("mySlides");
@@ -63,118 +50,120 @@
           x[i].style.display = "none";
         }
         x[slideIndex-1].style.display = "block";
+
         console.log(slideIndex);
     }
-
-    // current data and user 
+    // current data and user
     var current = slideIndex;
     var name = $("#username").text();
-
-    jQuery(document).ready(function(){ 
+    jQuery(document).ready(function(){
         var regular , random , simple , busy, inorganic, organic, dynamic, delicate, solid
         ,soft, flat, light, modern, massive, postmodern, craggy, classical, luxury, cheap,
         transparent, speed, like;
-        
+
         $(".btn-submit").click(function(e){
             e.preventDefault();
-
             $.ajaxSetup({
-                headers: {
+                headers:
+                    {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $("input[name=regular]").is(':checked') ? regular = $("input[name=regular]").val() : regular = null;
-            $("input[name=random]").is(':checked') ? random = $("input[name=random]").val() : random = null;
-            $("input[name=simple]").is(':checked') ? simple = $("input[name=simple]").val() : simple = null;
-            $("input[name=busy]").is(':checked') ? busy = $("input[name=busy]").val() : busy = null;
-            $("input[name=inorganic]").is(':checked') ? inorganic = $("input[name=inorganic]").val() : inorganic = null;     
-            $("input[name=organic]").is(':checked') ? organic = $("input[name=organic]").val() : organic = null;
-            $("input[name=dynamic]").is(':checked') ? dynamic = $("input[name=dynamic]").val() : dynamic = null;
-            $("input[name=delicate]").is(':checked') ? delicate = $("input[name=delicate]").val() : delicate = null;
-            $("input[name=solid]").is(':checked') ? solid = $("input[name=solid]").val() : solid = null;
-            $("input[name=soft]").is(':checked') ? soft = $("input[name=soft]").val() : soft = null;
-            $("input[name=flat]").is(':checked') ? flat = $("input[name=flat]").val() : flat = null;
-            $("input[name=light]").is(':checked') ? light = $("input[name=light]").val() : light = null;
-            $("input[name=modern]").is(':checked') ? modern = $("input[name=modern]").val() : modern = null;
-            $("input[name=massive]").is(':checked') ? massive = $("input[name=massive]").val() : massive = null;
-            $("input[name=postmodern]").is(':checked') ? postmodern = $("input[name=postmodern]").val() : postmodern = null;
-            $("input[name=craggy]").is(':checked') ? craggy = $("input[name=craggy]").val() : craggy = null;
-            $("input[name=classical]").is(':checked') ? classical = $("input[name=classical]").val() : classical = null;
-            $("input[name=luxury]").is(':checked') ? luxury = $("input[name=luxury]").val() : luxury = null;
-            $("input[name=cheap]").is(':checked') ? cheap = $("input[name=cheap]").val() : cheap = null;
-            $("input[name=transparent]").is(':checked') ? transparent = $("input[name=transparent]").val() : transparent = null;
-            $("input[name=speed]").is(':checked') ? speed = $("input[name=speed]").val() : speed = null;
+                    }
+                });
+            $("input[name=regular]").is(':checked') ? regular = $("input[name=regular]").val() : regular = 0;
+            $("input[name=random]").is(':checked') ? random = $("input[name=random]").val() : random = 0;
+            $("input[name=simple]").is(':checked') ? simple = $("input[name=simple]").val() : simple = 0;
+            $("input[name=busy]").is(':checked') ? busy = $("input[name=busy]").val() : busy = 0;
+            $("input[name=inorganic]").is(':checked') ? inorganic = $("input[name=inorganic]").val() : inorganic = 0;
+            $("input[name=organic]").is(':checked') ? organic = $("input[name=organic]").val() : organic = 0;
+            $("input[name=dynamic]").is(':checked') ? dynamic = $("input[name=dynamic]").val() : dynamic = 0;
+            $("input[name=delicate]").is(':checked') ? delicate = $("input[name=delicate]").val() : delicate = 0;
+            $("input[name=solid]").is(':checked') ? solid = $("input[name=solid]").val() : solid = 0;
+            $("input[name=soft]").is(':checked') ? soft = $("input[name=soft]").val() : soft = 0;
+            $("input[name=flat]").is(':checked') ? flat = $("input[name=flat]").val() : flat = 0;
+            $("input[name=light]").is(':checked') ? light = $("input[name=light]").val() : light = 0;
+            $("input[name=modern]").is(':checked') ? modern = $("input[name=modern]").val() : modern = 0;
+            $("input[name=massive]").is(':checked') ? massive = $("input[name=massive]").val() : massive = 0;
+            $("input[name=postmodern]").is(':checked') ? postmodern = $("input[name=postmodern]").val() : postmodern = 0;
+            $("input[name=craggy]").is(':checked') ? craggy = $("input[name=craggy]").val() : craggy = 0;
+            $("input[name=classical]").is(':checked') ? classical = $("input[name=classical]").val() : classical = 0;
+            $("input[name=luxury]").is(':checked') ? luxury = $("input[name=luxury]").val() : luxury = 0;
+            $("input[name=cheap]").is(':checked') ? cheap = $("input[name=cheap]").val() : cheap = 0;
+            $("input[name=transparent]").is(':checked') ? transparent = $("input[name=transparent]").val() : transparent = 0;
+            $("input[name=speed]").is(':checked') ? speed = $("input[name=speed]").val() : speed = 0;
             var geometry = $("#geometry").val();
             var material = $("#material").val();
             var other = $("textarea#other").val();
-            $("input[name=like]").is(':checked') ? like = $("input[name=like]").val() : like = null;
+            $("input[name=like]").is(':checked') ? like = $("input[name=like]").val() : like = 0;
 
-            
             //console.log("name :" + name + "current : " + current );
-            // current data and user 
+            // current data and user
             var current = slideIndex;
             var name = $("#username").text();
 
             $.ajax({
                 type:'POST',
                 url: "{{ route('building.store') }}",
-                data:{ 
-                    regular:regular, random:random, simple:simple, busy:busy, 
-                    inorganic:inorganic, organic:organic, dynamic:dynamic, delicate:delicate, 
+                data:{
+                    regular:regular, random:random, simple:simple, busy:busy,
+                    inorganic:inorganic, organic:organic, dynamic:dynamic, delicate:delicate,
                     solid:solid, soft:soft, flat:flat, light:light, modern:modern, massive:massive,
-                    postmodern:postmodern, craggy:craggy, classical:classical, luxury:luxury, 
-                    cheap:cheap,transparent:transparent, speed:speed, geometry:geometry, 
+                    postmodern:postmodern, craggy:craggy, classical:classical, luxury:luxury,
+                    cheap:cheap,transparent:transparent, speed:speed, geometry:geometry,
                     material:material, other:other, like:like , current:current, name:name
                 },
-                success: function(result){
+                success:function(result){
                     console.log(result);
-                    
                     swal({
-                        title: "Good job!",
-                        text: "You have saved the data!",
-                        icon: "success",
-                        button: "OK!",
-                        timer: 3000,
-                    });
-
-                    // refresh page
-                    //location.reload();
+                        text: "Hello world!",
+                        });
                 }
             });
-            
         });
-
-        // click at the slide button to change data 
+        // click at the slide button to change data
         $(".w3-button").click(function(e){
             e.preventDefault();
-
-            // current data and user 
+            // current data and user
             var current = slideIndex;
             var name = $("#username").text();
-
             $.ajax({
                 type:'GET',
                 url: "{{ route('changeImage') }}",
-                data:{ 
+                data:{
                     current:slideIndex, name:name
                 },
                 success: function(result){
+                    //old
+                    // if(result == null){
+                    //     $("input[type=checkbox]").attr("checked", false);
+                    //     // will be fixed later
+                    //     $("select[name=geometry] option[value=null]").attr("selected", true);
+                    //     $("select[name=material] option[value=null]").attr("selected", true);
 
+                    //new
                     if(result.data == null){
                         console.log('In if result.data == null');
-
+                        // $("#geometry option").removeAttr('selected');
+                        // $("#material option").removeAttr('selected');
+                        // $("#geometry option[value=null]").attr('selected');
+                        // $("#material option[value=null]").attr('selected')
+                        $("#other").empty().val("");
                         $("#geometry option").removeAttr('selected');
                         $("#material option").removeAttr('selected');
-                        $("#geometry option[value=null]").attr('selected');
-                        $("#material option[value=null]").attr('selected');
-                        $("input[type=checkbox]").prop("checked",false).checkboxradio();   // 
-                              
+                        $("#geometry option[value=null]").attr('selected','selected');
+                        $("#material option[value=null]").attr('selected','selected');
+                        $("input[type=checkbox]").prop("checked",false).checkboxradio();
+
+
                     }else{
+                        //old
+                        // console.log(result.data);
+                        // // uncheck all checkbox
+                        // $("input[type=checkbox]").attr("checked", false);
+
+                        //new
                         console.log('In else result.data');
-                        // uncheck all checkbox 
                         $("input[type=checkbox]").attr("checked", false);
-    
+
                         result.data.solid == 1 ? $("input[name=solid]").attr("checked", "checked") : '';
                         result.data.modern == 1 ?$("input[name=modern]").attr("checked", "checked") : '';
                         result.data.massive == 1 ?$("input[name=massive]").attr("checked", "checked"): '';
@@ -200,17 +189,12 @@
                         $("select[name=material] option[value=" + result.data.material + "]").attr("selected", true);
                         $("textarea[name=other]").text(result.data.other);
                         result.data.like == 1 ?$("input[name=like]").attr("checked", "checked"): '';
-                    } 
+                    }
                 }
             });
-
         });
-
 });
 </script>
 
-<script type="text/javascript">
-    
-</script>
 
 </html>
